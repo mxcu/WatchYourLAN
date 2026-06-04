@@ -30,6 +30,13 @@ type Conf struct {
 	InfluxSkipTLS bool
 	// Prometheus
 	PrometheusEnable bool
+	// Clickhouse
+	ClickhouseEnable   bool
+	ClickhouseAddr     string
+	ClickhouseUser     string
+	ClickhousePassword string
+	ClickhouseDB       string
+	ClickhouseTable    string
 }
 
 // Host - one host

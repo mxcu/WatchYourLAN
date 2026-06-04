@@ -35,6 +35,7 @@ func Routes(router *gin.Engine) {
 		r0.POST("/config_settings/", saveSettingsHandler)     // config.go
 		r0.POST("/config_influx/", saveInfluxHandler)         // config.go
 		r0.POST("/config_prometheus/", savePrometheusHandler) // config.go
+		r0.POST("/config_clickhouse/", saveClickhouseHandler) // config.go
 	}
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))

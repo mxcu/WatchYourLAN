@@ -39,6 +39,13 @@ export interface Conf {
 	InfluxSkipTLS: boolean;
 	// Prometheus
 	PrometheusEnable: boolean;
+	// Clickhouse
+	ClickhouseEnable:   boolean;
+	ClickhouseAddr:     string;
+	ClickhouseUser:     string;
+	ClickhousePassword: string;
+	ClickhouseDB:       string;
+	ClickhouseTable:    string;
 };
 
 export const emptyHost:Host = {
@@ -77,6 +84,12 @@ export const emptyConf:Conf = {
 	InfluxBucket:  "",
 	InfluxSkipTLS: false,
 	PrometheusEnable: false,
+	ClickhouseEnable:   false,
+	ClickhouseAddr:     "",
+	ClickhouseUser:     "",
+	ClickhousePassword: "",
+	ClickhouseDB:       "",
+	ClickhouseTable:    "",
 };
 
 export const [allHosts, setAllHosts] = createStore<Host[]>([]);

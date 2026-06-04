@@ -5,6 +5,7 @@ import (
 
 	"github.com/aceberg/WatchYourLAN/internal/arp"
 	"github.com/aceberg/WatchYourLAN/internal/check"
+	"github.com/aceberg/WatchYourLAN/internal/clickhouse"
 	"github.com/aceberg/WatchYourLAN/internal/conf"
 	"github.com/aceberg/WatchYourLAN/internal/gdb"
 	"github.com/aceberg/WatchYourLAN/internal/influx"
@@ -78,6 +79,9 @@ func compareHosts(foundHostsMap map[string]models.Host) {
 		}
 		if conf.AppConfig.PrometheusEnable {
 			prometheus.Add(aHost)
+		}
+		if conf.AppConfig.ClickhouseEnable {
+			clickhouse.Add(conf.AppConfig, aHost)
 		}
 	}
 

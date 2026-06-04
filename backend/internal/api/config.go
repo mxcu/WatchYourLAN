@@ -86,3 +86,19 @@ func savePrometheusHandler(c *gin.Context) {
 
 	c.Redirect(http.StatusFound, c.Request.Referer())
 }
+
+func saveClickhouseHandler(c *gin.Context) {
+
+	conf.AppConfig.ClickhouseAddr = c.PostForm("addr")
+	conf.AppConfig.ClickhouseUser = c.PostForm("user")
+	conf.AppConfig.ClickhousePassword = c.PostForm("password")
+	conf.AppConfig.ClickhouseDB = c.PostForm("db")
+	conf.AppConfig.ClickhouseTable = c.PostForm("table")
+
+	enable := c.PostForm("enable")
+	conf.AppConfig.ClickhouseEnable = enable == "on"
+
+	conf.Write(conf.AppConfig)
+
+	c.Redirect(http.StatusFound, c.Request.Referer())
+}

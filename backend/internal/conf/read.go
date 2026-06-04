@@ -31,6 +31,8 @@ func read(path string) (config models.Conf) {
 
 	viper.SetDefault("PROMETHEUS_ENABLE", false)
 
+	viper.SetDefault("CLICKHOUSE_ENABLE", false)
+
 	viper.SetConfigFile(path)
 	viper.SetConfigType("yaml")
 	err := viper.ReadInConfig()
@@ -62,6 +64,13 @@ func read(path string) (config models.Conf) {
 	config.InfluxBucket, _ = viper.Get("INFLUX_BUCKET").(string)
 
 	config.PrometheusEnable = viper.GetBool("PROMETHEUS_ENABLE")
+
+	config.ClickhouseEnable = viper.GetBool("CLICKHOUSE_ENABLE")
+	config.ClickhouseAddr, _ = viper.Get("CLICKHOUSE_ADDR").(string)
+	config.ClickhouseUser, _ = viper.Get("CLICKHOUSE_USER").(string)
+	config.ClickhousePassword, _ = viper.Get("CLICKHOUSE_PASSWORD").(string)
+	config.ClickhouseDB, _ = viper.Get("CLICKHOUSE_DB").(string)
+	config.ClickhouseTable, _ = viper.Get("CLICKHOUSE_TABLE").(string)
 
 	joined := viper.Get("ARP_STRS_JOINED").(string)
 	// slog.Info("ARP_STRS_JOINED: " + joined)

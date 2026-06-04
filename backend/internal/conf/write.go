@@ -43,6 +43,13 @@ func Write(config models.Conf) {
 
 	viper.Set("PROMETHEUS_ENABLE", config.PrometheusEnable)
 
+	viper.Set("clickhouse_enable", config.ClickhouseEnable)
+	viper.Set("clickhouse_addr", config.ClickhouseAddr)
+	viper.Set("clickhouse_user", config.ClickhouseUser)
+	viper.Set("clickhouse_password", config.ClickhousePassword)
+	viper.Set("clickhouse_db", config.ClickhouseDB)
+	viper.Set("clickhouse_table", config.ClickhouseTable)
+
 	err := viper.WriteConfig()
 	check.IfError(err)
 }
